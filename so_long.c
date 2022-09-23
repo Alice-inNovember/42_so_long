@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/23 11:22:32 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/09/23 17:41:06 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "so_long.h"
+#include "map_util.h"
 
-#include <fcntl.h>
-#include "get_next_line.h"
-#include "mlx.h"
-
-int	main(void)
+int	main(int argc, char **argv)
 {
 	void	*mlx;
-	void	*win;
-	int		mapfd;
+	void	*mlx_win;
+	char	**map;
 
+	if (argc != 2)
+		return (0);
+	map = map_init(argv[1]);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "test");
-	fd = open("maptest.ber", O_RDONLY);
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	mlx_loop(mlx);
 }
