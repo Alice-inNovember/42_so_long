@@ -14,7 +14,7 @@ MLXDIR		=	libmlx
 MAPDIR		=	map_srcs
 #FILES
 LIBS		=	$(LFTDIR)/libft.a \
-				$(GNLDIR)/libget_next_line.a \
+				$(GNLDIR)/get_next_line.a \
 				$(MLXDIR)/libmlx.a
 SRCS		=	so_long.c
 OBJS		=	${SRCS:.c=.o}
