@@ -1,28 +1,37 @@
 NAME		=	so_long
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
+MFLAGS		=	-framework OpenGL -framework AppKit
 RM			=	rm -rf
-LIB_DIRS	=	get_next_line libmlx
-LIBC 		=	ar rcs
-LIBS		=	get_next_line.a libmlx.a
-SRCS		=	
-OBJS		=
+LIBC		=	ar rcs
+GNLDIR		=	get_next_line
+GNLLIB		=	get_next_line/libget_next_line.a
+MLXDIR		=	libmlx
+MLXLIB		=	libmlx/libmlx.a
+SRCS		=	main.c
+OBJS		=	${SRCS:.c=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIB_DIRS)
-	$(CC) $(NAME) $(OBJS) -framework OpenGL -framework AppKit
-
 bonus : $(NAME)
 
-$(LIB_DIRS) :
-	$(MAKE) -C $@
+$(NAME) : $(OBJS)
+	$(MAKE) -C get_next_line
+	$(MAKE) -C libmlx
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(GNLLIB) $(MLXLIB) $(MFLAGS)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(GNLDIR) -I $(MLXDIR)
 
 clean :
-	for ldir in $(LIB_DIRS); do $(MAKE) -C $$ldir clean; done
+	$(MAKE) -C get_next_line clean
+	$(MAKE) -C libmlx clean
+	$(RM) $(OBJS)
 
 fclean : clean
-	for ldir in $(LIB_DIRS); do $(MAKE) -C $$ldir fclean; done
+	$(MAKE) -C get_next_line fclean
+	$(MAKE) -C libmlx fclean
+	$(RM) $(NAME)
 
 re : fclean all
 
