@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/23 17:41:21 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/09/26 10:31:48 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	map_charset_cnt(char **map, t_mapsetcnt *mapsetcnt, int i, int j)
 		{
 			if (map[i][j] == '0')
 				mapsetcnt->floor ++;
-			if (map[i][j] == '0')
-				mapsetcnt->floor ++;
-			if (map[i][j] == '0')
-				mapsetcnt->floor ++;
-			if (map[i][j] == '0')
-				mapsetcnt->floor ++;
-			if (map[i][j] == '0')
-				mapsetcnt->floor ++;
+			else if (map[i][j] == '1')
+				mapsetcnt->wall ++;
+			else if (map[i][j] == 'C')
+				mapsetcnt->coin ++;
+			else if (map[i][j] == 'E')
+				mapsetcnt->exit ++;
+			else if (map[i][j] == 'P')
+				mapsetcnt->player ++;
 			else
 				return ('N');
 			j++;
@@ -106,10 +106,16 @@ int	map_check_wall(char **map)
 int	map_check_valid(char **map)
 {
 	if (map_check_rectangle(map) == 'N')
+	{
 		return ('N');
+	}
 	else if (map_check_charset(map) == 'N')
+	{
 		return ('N');
+	}
 	else if (map_check_wall(map) == 'N')
+	{
 		return ('N');
+	}
 	return ('Y');
 }
