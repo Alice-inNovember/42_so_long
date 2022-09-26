@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/26 10:31:48 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/09/26 10:34:50 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	map_check_wall(char **map)
 	{
 		if (map[i][0] != '1' || map[i][xlast] != '1')
 			return ('N');
+		i++;
 	}
 	return ('Y');
 }
