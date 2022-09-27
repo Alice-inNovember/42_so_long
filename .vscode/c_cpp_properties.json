@@ -4,6 +4,9 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}",
+                "${workspaceFolder}/libft",
+                "${workspaceFolder}/libmlx",
                 "${workspaceFolder}/get_next_line"
             ],
             "defines": [],

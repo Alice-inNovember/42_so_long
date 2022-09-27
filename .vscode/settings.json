@@ -1,7 +1,10 @@
 {
-	"C_Cpp.errorSquiggles": "Disabled",
 	"files.associations": {
+		"sprite.h": "c",
 		"get_next_line.h": "c",
-		"so_long.h": "c"
+		"unistd.h": "c",
+		"fcntl.h": "c",
+		"so_long.h": "c",
+		"mlx.h": "c"
 	}
 }
