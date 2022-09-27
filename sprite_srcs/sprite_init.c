@@ -19,20 +19,22 @@ void	tile_init(t_mlx *so_long, int x, int y)
 	tile = &(so_long->tile_lib);
 	tile->land[0] = mlx_png_file_to_image(so_long->mlx, LAND_00, &x, &y);
 	tile->land[1] = mlx_png_file_to_image(so_long->mlx, LAND_01, &x, &y);
-	tile->wall_de = mlx_png_file_to_image(so_long->mlx, WALL_DE, &x, &y);
-	tile->wall_dl = mlx_png_file_to_image(so_long->mlx, WALL_DL, &x, &y);
-	tile->wall_dr = mlx_png_file_to_image(so_long->mlx, WALL_DR, &x, &y);
-	tile->wall_h = mlx_png_file_to_image(so_long->mlx, WALL_H, &x, &y);
-	tile->wall_hl = mlx_png_file_to_image(so_long->mlx, WALL_HL, &x, &y);
-	tile->wall_hr = mlx_png_file_to_image(so_long->mlx, WALL_HR, &x, &y);
-	tile->wall_le = mlx_png_file_to_image(so_long->mlx, WALL_LE, &x, &y);
-	tile->wall_re = mlx_png_file_to_image(so_long->mlx, WALL_RE, &x, &y);
-	tile->wall_ue = mlx_png_file_to_image(so_long->mlx, WALL_UE, &x, &y);
-	tile->wall_ul = mlx_png_file_to_image(so_long->mlx, WALL_UL, &x, &y);
-	tile->wall_ur = mlx_png_file_to_image(so_long->mlx, WALL_UR, &x, &y);
-	tile->wall_v = mlx_png_file_to_image(so_long->mlx, WALL_V, &x, &y);
-	tile->wall_vd = mlx_png_file_to_image(so_long->mlx, WALL_VD, &x, &y);
-	tile->wall_vu = mlx_png_file_to_image(so_long->mlx, WALL_VU, &x, &y);
+	tile->wall_rlud = mlx_png_file_to_image(so_long->mlx, WALL_RLUD, &x, &y);
+	tile->wall_rlu = mlx_png_file_to_image(so_long->mlx, WALL_RLU, &x, &y);
+	tile->wall_rld = mlx_png_file_to_image(so_long->mlx, WALL_RLD, &x, &y);
+	tile->wall_rud = mlx_png_file_to_image(so_long->mlx, WALL_RUD, &x, &y);
+	tile->wall_lud = mlx_png_file_to_image(so_long->mlx, WALL_LUD, &x, &y);
+	tile->wall_rl = mlx_png_file_to_image(so_long->mlx, WALL_RL, &x, &y);
+	tile->wall_ud = mlx_png_file_to_image(so_long->mlx, WALL_UD, &x, &y);
+	tile->wall_ru = mlx_png_file_to_image(so_long->mlx, WALL_RU, &x, &y);
+	tile->wall_rd = mlx_png_file_to_image(so_long->mlx, WALL_RD, &x, &y);
+	tile->wall_lu = mlx_png_file_to_image(so_long->mlx, WALL_LU, &x, &y);
+	tile->wall_ld = mlx_png_file_to_image(so_long->mlx, WALL_LD, &x, &y);
+	tile->wall_r = mlx_png_file_to_image(so_long->mlx, WALL_R, &x, &y);
+	tile->wall_l = mlx_png_file_to_image(so_long->mlx, WALL_L, &x, &y);
+	tile->wall_u = mlx_png_file_to_image(so_long->mlx, WALL_U, &x, &y);
+	tile->wall_d = mlx_png_file_to_image(so_long->mlx, WALL_D, &x, &y);
+	tile->wall = mlx_png_file_to_image(so_long->mlx, WALL, &x, &y);
 }
 
 void	prop_init(t_mlx *so_long, int x, int y)

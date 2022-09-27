@@ -17,20 +17,22 @@
 
 # define LAND_00	"./sprite_file/LAND/LAND00.png"
 # define LAND_01	"./sprite_file/LAND/LAND01.png"
-# define WALL_DE	"./sprite_file/WALL/WALL_DE.png"
-# define WALL_DL	"./sprite_file/WALL/WALL_DL.png"
-# define WALL_DR	"./sprite_file/WALL/WALL_DR.png"
-# define WALL_H		"./sprite_file/WALL/WALL_H.png"
-# define WALL_HL	"./sprite_file/WALL/WALL_HL.png"
-# define WALL_HR	"./sprite_file/WALL/WALL_HR.png"
-# define WALL_LE	"./sprite_file/WALL/WALL_LE.png"
-# define WALL_RE	"./sprite_file/WALL/WALL_RE.png"
-# define WALL_UE	"./sprite_file/WALL/WALL_UE.png"
-# define WALL_UL	"./sprite_file/WALL/WALL_UL.png"
-# define WALL_UR	"./sprite_file/WALL/WALL_UR.png"
-# define WALL_V		"./sprite_file/WALL/WALL_V.png"
-# define WALL_VD	"./sprite_file/WALL/WALL_VD.png"
-# define WALL_VU	"./sprite_file/WALL/WALL_VU.png"
+# define WALL		"./sprite_file/WALL/WALL.png"
+# define WALL_RLUD	"./sprite_file/WALL/WALL_RLUD.png"
+# define WALL_RLU	"./sprite_file/WALL/WALL_RLU.png"
+# define WALL_RLD	"./sprite_file/WALL/WALL_RLD.png"
+# define WALL_RUD	"./sprite_file/WALL/WALL_RUD.png"
+# define WALL_LUD	"./sprite_file/WALL/WALL_LUD.png"
+# define WALL_RL	"./sprite_file/WALL/WALL_RL.png"
+# define WALL_UD	"./sprite_file/WALL/WALL_UD.png"
+# define WALL_RU	"./sprite_file/WALL/WALL_RU.png"
+# define WALL_RD	"./sprite_file/WALL/WALL_RD.png"
+# define WALL_LU	"./sprite_file/WALL/WALL_LU.png"
+# define WALL_LD	"./sprite_file/WALL/WALL_LD.png"
+# define WALL_R		"./sprite_file/WALL/WALL_R.png"
+# define WALL_L		"./sprite_file/WALL/WALL_L.png"
+# define WALL_U		"./sprite_file/WALL/WALL_U.png"
+# define WALL_D		"./sprite_file/WALL/WALL_D.png"
 
 # define KEY		"./sprite_file/PROP/KEY.png"
 # define BERRAL		"./sprite_file/PROP/BERRAL.png"
@@ -47,20 +49,22 @@
 typedef struct s_tile_lib
 {
 	void	*land[2];
-	void	*wall_de;
-	void	*wall_dl;
-	void	*wall_dr;
-	void	*wall_h;
-	void	*wall_hl;
-	void	*wall_hr;
-	void	*wall_le;
-	void	*wall_re;
-	void	*wall_ue;
-	void	*wall_ul;
-	void	*wall_ur;
-	void	*wall_v;
-	void	*wall_vd;
-	void	*wall_vu;
+	void	*wall_rlud;
+	void	*wall_rlu;
+	void	*wall_rld;
+	void	*wall_rud;
+	void	*wall_lud;
+	void	*wall_rl;
+	void	*wall_ud;
+	void	*wall_ru;
+	void	*wall_rd;
+	void	*wall_lu;
+	void	*wall_ld;
+	void	*wall_r;
+	void	*wall_l;
+	void	*wall_u;
+	void	*wall_d;
+	void	*wall;
 }	t_tile_lib;
 
 typedef struct s_prop_lib
