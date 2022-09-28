@@ -17,7 +17,8 @@ SPRDIR		=	sprite_srcs
 LIBS		=	$(LFTDIR)/libft.a \
 				$(GNLDIR)/get_next_line.a
 DYLIB		=	$(MLXDIR)/libmlx.dylib
-SRCS		=	so_long.c
+SRCS		=	so_long.c \
+				display_window.c
 OBJS		=	${SRCS:.c=.o}
 MAPSRCS		=	$(MAPDIR)/map_check.c \
 				$(MAPDIR)/map_init_util.c

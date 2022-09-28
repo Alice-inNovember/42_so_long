@@ -88,6 +88,10 @@ void	*wall_select2(t_mlx so_long, int x, int y)
 		wall_arr[14] = so_long.tile_lib.wall_lud;
 		wall_arr[15] = so_long.tile_lib.wall_rlud;
 	}
+	if(!wall_arr[0])
+	{
+		write(1, "a", 1);
+	}
 	select = 0;
 	if (x != so_long.x && so_long.map[y][x + 1] == '1')
 			select += 1;
@@ -115,7 +119,7 @@ void	display_cord(t_mlx so_long, int x, int y, int size)
 	p_lib = &(so_long.prop_lid);
 	dp_window(mlx, mlx_win, t_lib->land[0], x * size, y * size);
 	if (so_long.map[y][x] == '1')
-		dp_window(mlx, mlx_win, wall_select(so_long, x, y), x * size, y * size);
+		dp_window(mlx, mlx_win, wall_select2(so_long, x, y), x * size, y * size);
 	else if (so_long.map[y][x] == 'P')
 		dp_window(mlx, mlx_win, p_lib->rock, x * size, y * size);
 	else if (so_long.map[y][x] == 'C')
