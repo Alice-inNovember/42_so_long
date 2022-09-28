@@ -88,10 +88,6 @@ void	*wall_select2(t_mlx so_long, int x, int y)
 		wall_arr[14] = so_long.tile_lib.wall_lud;
 		wall_arr[15] = so_long.tile_lib.wall_rlud;
 	}
-	if(!wall_arr[0])
-	{
-		write(1, "a", 1);
-	}
 	select = 0;
 	if (x != so_long.x && so_long.map[y][x + 1] == '1')
 			select += 1;
