@@ -11,13 +11,14 @@ MLXFLAGS	=	-framework OpenGL -framework AppKit
 LFTDIR		=	libft
 GNLDIR		=	get_next_line
 MLXDIR		=	libmlx
-MAPDIR		=	map_srcs
-SPRDIR		=	sprite_srcs
+MAPDIR		=	srcs_map
+SPRDIR		=	srcs_sprite
 #FILES
 LIBS		=	$(LFTDIR)/libft.a \
 				$(GNLDIR)/get_next_line.a
 DYLIB		=	$(MLXDIR)/libmlx.dylib
 SRCS		=	so_long.c \
+				so_long_util.c \
 				display_window.c
 OBJS		=	${SRCS:.c=.o}
 MAPSRCS		=	$(MAPDIR)/map_check.c \
@@ -38,7 +39,7 @@ $(NAME) : $(OBJS) $(MAPOBJS) $(SPRITEOBJS)
 	-install_name_tool -change libmlx.dylib ./$(DYLIB) $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(LFTDIR) -I $(GNLDIR) -I $(MLXDIR) -I $(MAPDIR) -I $(SPRDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(LFTDIR) -I $(GNLDIR) -I $(MLXDIR) -I $(PWD)
 
 clean :
 	$(MAKE) -C $(LFTDIR) clean

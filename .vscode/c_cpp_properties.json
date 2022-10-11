@@ -4,14 +4,14 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}",
-                "${workspaceFolder}/libft",
-                "${workspaceFolder}/libmlx",
                 "${workspaceFolder}/get_next_line",
-                "${workspaceFolder}/map_srcs",
-                "${workspaceFolder}/sprite_srcs"
+                "${workspaceFolder}/libft"
             ],
             "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "macos-clang-x64",

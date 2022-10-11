@@ -6,11 +6,11 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/23 17:30:45 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 15:36:14 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_util.h"
+#include "so_long.h"
 
 char	**map_pars_re(int mapfd, int cnt)
 {
@@ -23,15 +23,15 @@ char	**map_pars_re(int mapfd, int cnt)
 		if (!cnt)
 			return (0);
 		returnmap = (char **)malloc(sizeof(char *) * (cnt + 1));
+		if (!returnmap)
+		{
+			perror("map_pars malloc : ");
+			exit(errno);
+		}
 		returnmap[cnt] = 0;
 		return (returnmap);
 	}
 	returnmap = map_pars_re(mapfd, cnt + 1);
-	if (!returnmap)
-	{
-		free (temp);
-		return (0);
-	}
 	returnmap[cnt] = temp;
 	return (returnmap);
 }
@@ -66,6 +66,7 @@ void	map_free(char	**map)
 		i++;
 	}
 	free (map);
+	map = 0;
 }
 
 char	**map_init(char *filename)
@@ -77,10 +78,6 @@ char	**map_init(char *filename)
 	returnmap = map_pars_re(mapfd, 0);
 	close(mapfd);
 	map_rmove_nl(returnmap);
-	if (map_check_valid(returnmap) == 'N')
-	{
-		map_free(returnmap);
-		return (0);
-	}
+	map_check_valid(returnmap);
 	return (returnmap);
 }

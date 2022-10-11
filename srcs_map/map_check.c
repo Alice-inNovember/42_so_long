@@ -6,11 +6,11 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/26 10:34:50 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/11 10:34:05 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_util.h"
+#include "so_long.h"
 
 int	map_check_rectangle(char **map)
 {
@@ -108,15 +108,18 @@ int	map_check_valid(char **map)
 {
 	if (map_check_rectangle(map) == 'N')
 	{
-		return ('N');
+		write(2, "map is not rectangle\n", 21);
+		exit (0);
 	}
 	else if (map_check_charset(map) == 'N')
 	{
-		return ('N');
+		write(2, "map set is not valid\n", 21);
+		exit (0);
 	}
 	else if (map_check_wall(map) == 'N')
 	{
-		return ('N');
+		write(2, "map is not surround\n", 20);
+		exit (0);
 	}
 	return ('Y');
 }

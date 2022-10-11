@@ -6,11 +6,11 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:40:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/09/27 11:41:47 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/11 09:58:31 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sprite.h"
+#include "so_long.h"
 
 void	tile_init(t_mlx *so_long, int x, int y)
 {
@@ -41,7 +41,7 @@ void	prop_init(t_mlx *so_long, int x, int y)
 {
 	t_prop_lib	*prop;
 
-	prop = &(so_long->prop_lid);
+	prop = &(so_long->prop_lib);
 	prop->key = mlx_png_file_to_image(so_long->mlx, KEY, &x, &y);
 	prop->berral = mlx_png_file_to_image(so_long->mlx, BERRAL, &x, &y);
 	prop->rock = mlx_png_file_to_image(so_long->mlx, ROCK, &x, &y);
