@@ -11,21 +11,17 @@ MLXFLAGS	=	-framework OpenGL -framework AppKit
 LFTDIR		=	libft
 GNLDIR		=	get_next_line
 MLXDIR		=	libmlx
-MAPDIR		=	srcs_map
-SPRDIR		=	srcs_sprite
 #FILES
 LIBS		=	$(LFTDIR)/libft.a \
 				$(GNLDIR)/get_next_line.a
 DYLIB		=	$(MLXDIR)/libmlx.dylib
 SRCS		=	so_long.c \
 				so_long_util.c \
-				display_window.c
+				so_display.c \
+				so_map_check.c \
+				so_map_init.c \
+				so_sprite_init.c
 OBJS		=	${SRCS:.c=.o}
-MAPSRCS		=	$(MAPDIR)/map_check.c \
-				$(MAPDIR)/map_init_util.c
-MAPOBJS		=	${MAPSRCS:.c=.o}
-SPRITESRCS	=	$(SPRDIR)/sprite_init.c
-SPRITEOBJS	=	${SPRITESRCS:.c=.o}
 
 all : $(NAME)
 
@@ -35,7 +31,7 @@ $(NAME) : $(OBJS) $(MAPOBJS) $(SPRITEOBJS)
 	$(MAKE) -C $(LFTDIR)
 	$(MAKE) -C $(GNLDIR)
 	$(MAKE) -C $(MLXDIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MAPOBJS) $(SPRITEOBJS) $(LIBS) $(MLXFLAGS) -L$(MLXDIR) -lmlx
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXFLAGS) -L$(MLXDIR) -lmlx
 	-install_name_tool -change libmlx.dylib ./$(DYLIB) $(NAME)
 
 %.o : %.c
@@ -45,7 +41,7 @@ clean :
 	$(MAKE) -C $(LFTDIR) clean
 	$(MAKE) -C $(GNLDIR) clean
 	$(MAKE) -C $(MLXDIR) clean
-	$(RM) $(OBJS) $(MAPOBJS) $(SPRITEOBJS)
+	$(RM) $(OBJS)
 
 fclean : clean
 	$(MAKE) -C $(LFTDIR) fclean
