@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:38:42 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/12 16:16:45 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/13 12:40:18 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ void	*wall_select(t_data *data, int x, int y)
 	if (!wall_arr[0])
 		wall_init(data, wall_arr);
 	select = 0;
-	if (x != data->map.x && data->map.map[y][x + 1] == '1')
+	if (x != data->map.x - 1 && data->map.map[y][x + 1] == '1')
 			select += 1;
 	if (x != 0 && data->map.map[y][x - 1] == '1')
 			select += 2;
 	if (y != 0 && data->map.map[y - 1][x] == '1')
 			select += 4;
-	if (y != data->map.y && data->map.map[y + 1][x] == '1')
+	if (y != data->map.y - 1 && data->map.map[y + 1][x] == '1')
 			select += 8;
 	return (wall_arr[select]);
 }
 
-void	render_tileset(t_data *data, int x, int y, int frame)
+void	render_tileset(t_data *data, int x, int y, size_t frame)
 {
 	void	*img;
 
 	if (data->map.map[y][x] == '1')
 		img = wall_select(data, x, y);
 	else if (data->map.map[y][x] == 'P')
-		img = data->prop.berral;
+		img = data->player.img_r;
 	else if (data->map.map[y][x] == 'C')
 		img = data->prop.coin[frame % 8];
 	else if (data->map.map[y][x] == 'E')
@@ -68,11 +68,11 @@ void	render_tileset(t_data *data, int x, int y, int frame)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x * 32, y * 32);
 }
 
-void	render_window(t_data *data)
+int	render_window(t_data *data)
 {
-	int			x;
-	int			y;
-	static int	frame;
+	int				x;
+	int				y;
+	static size_t	frame;
 
 	y = 0;
 	while (data->map.map[y])
@@ -85,4 +85,6 @@ void	render_window(t_data *data)
 		}
 		y++;
 	}
+	frame++;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:13:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/12 16:17:56 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/13 12:46:13 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@
 # define KEY_D		2
 # define KEY_ESC	53
 
+# define ON_KEYDOWN		2
+# define ON_KEYUP		3
+# define ON_MOUSEDOWN	4
+# define ON_MOUSEUP		5
+# define ON_MOUSEMOVE	6
+# define ON_EXPOSE		12
+# define ON_DESTROY		17
+
 typedef struct s_map
 {
 	char	**map;
@@ -44,10 +52,15 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	key;
-	int	coin;
+	int		x;
+	int		y;
+	int		key;
+	int		coin;
+	int		face;
+	void	*img_u;
+	void	*img_d;
+	void	*img_r;
+	void	*img_l;
 }	t_player;
 
 typedef struct s_data
@@ -71,5 +84,11 @@ int		map_check_valid(t_data *data);
 
 //sprite
 void	sprite_init(t_data *data);
+
+//display
+int		render_window(t_data *data);
+
+//player_cnt
+void	player_control(int keycode, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:52:24 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/12 16:14:38 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/13 12:39:56 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,19 @@ void	prop_image_init(t_data *data)
 	data->prop.coin[7] = png2image(data->mlx, COIN07, &x, &y);
 }
 
+void	player_image_init(t_data *data)
+{
+	void	*(*png2image)(void *, char *, int *, int *);
+	int		x;
+	int		y;
+
+	png2image = mlx_png_file_to_image;
+	data->player.img_r = png2image(data->mlx, PLAYER, &x, &y);
+}
+
 void	sprite_init(t_data *data)
 {
+	player_image_init(data);
 	wall_image_init(data);
 	prop_image_init(data);
 }

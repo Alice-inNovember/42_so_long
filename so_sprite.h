@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:00:07 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/12 16:18:11 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/13 12:39:25 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define COIN05		"./file_sprite/PROP/COIN05.png"
 # define COIN06		"./file_sprite/PROP/COIN06.png"
 # define COIN07		"./file_sprite/PROP/COIN07.png"
+
+# define PLAYER		"./file_sprite/PLAYER/PLAYER.png"
 
 typedef struct s_wall
 {

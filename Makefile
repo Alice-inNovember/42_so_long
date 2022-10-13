@@ -20,7 +20,8 @@ SRCS		=	so_long.c \
 				so_display.c \
 				so_map_check.c \
 				so_map_init.c \
-				so_sprite_init.c
+				so_sprite_init.c \
+				so_player_control.c
 OBJS		=	${SRCS:.c=.o}
 
 all : $(NAME)
