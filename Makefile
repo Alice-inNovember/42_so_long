@@ -47,7 +47,7 @@ clean :
 fclean : clean
 	$(MAKE) -C $(LFTDIR) fclean
 	$(MAKE) -C $(GNLDIR) fclean
-	$(MAKE) -C $(MLXDIR) clean
+	$(MAKE) -C $(MLXDIR) fclean
 	$(RM) $(NAME)
 
 re : fclean all
