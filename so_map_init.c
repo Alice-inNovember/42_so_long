@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init_util.c                                    :+:      :+:    :+:   */
+/*   so_map_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/12 14:30:32 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 10:38:39 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,24 @@ void	map_free(char	**map)
 	map = 0;
 }
 
+void	map_val_set(t_data *data)
+{
+	data->map.player = 0;
+	data->map.floor = 0;
+	data->map.wall = 0;
+	data->map.coin = 0;
+	data->map.exit = 0;
+	data->map.barrel = 0;
+}
+
 void	map_init(char *filename, t_data *data)
 {
 	int		mapfd;
 
+	map_val_set(data);
 	mapfd = open(filename, O_RDONLY);
+	if (mapfd == -1)
+		err_exit("open", errno);
 	data->map.map = map_pars_re(mapfd, 0);
 	close(mapfd);
 	map_rmove_nl(data->map.map);

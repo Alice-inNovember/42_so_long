@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:13:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/13 12:46:13 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:32:34 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	int		wall;
 	int		coin;
 	int		exit;
+	int		barrel;
 	int		player;
 }	t_map;
 
@@ -87,8 +88,9 @@ void	sprite_init(t_data *data);
 
 //display
 int		render_window(t_data *data);
+void	render_background(t_data *data, int x, int y);
 
 //player_cnt
-void	player_control(int keycode, t_data *data);
+void	player_control(t_data *data, int x, int y);
 
 #endif

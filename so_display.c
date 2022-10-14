@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:38:42 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/13 12:40:18 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:39:37 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,46 @@ void	*wall_select(t_data *data, int x, int y)
 void	render_tileset(t_data *data, int x, int y, size_t frame)
 {
 	void	*img;
+	int		x_cord;
+	int		y_cord;
 
-	if (data->map.map[y][x] == '1')
-		img = wall_select(data, x, y);
+	x_cord = (x + 1) * 32;
+	y_cord = (y + 1) * 32;
+	img = data->wall.land[0];
+	if (data->map.map[y][x] == '0')
+		;
 	else if (data->map.map[y][x] == 'P')
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
 		img = data->player.img_r;
+	}
 	else if (data->map.map[y][x] == 'C')
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
 		img = data->prop.coin[frame % 8];
+	}
 	else if (data->map.map[y][x] == 'E')
 		img = data->prop.key;
+	else if (data->map.map[y][x] == 'B')
+		img = data->prop.berral;
 	else
-		img = data->wall.land[0];
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x * 32, y * 32);
+		return ;
+	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
+}
+
+void	render_background(t_data *data, int x, int y)
+{
+	void	*img;
+	int		x_cord;
+	int		y_cord;
+
+	x_cord = (x + 1) * 32;
+	y_cord = (y + 1) * 32;
+	img = data->wall.land[0];
+	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
+	if (data->map.map[y][x] == '1')
+		img = wall_select(data, x, y);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
 }
 
 int	render_window(t_data *data)
@@ -85,6 +113,7 @@ int	render_window(t_data *data)
 		}
 		y++;
 	}
+	mlx_sync(MLX_SYNC_WIN_FLUSH_CMD, data->mlx_win);
 	frame++;
 	return (0);
 }
