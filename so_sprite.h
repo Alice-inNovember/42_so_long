@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:00:07 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:58:59 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 16:00:36 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@
 # define PLAYER05R	"./file_sprite/PLAYER/PLAYER05R.png"
 # define PLAYER06R	"./file_sprite/PLAYER/PLAYER06R.png"
 # define PLAYER07R	"./file_sprite/PLAYER/PLAYER07R.png"
+
+# define PLAYER00L	"./file_sprite/PLAYER/PLAYER00L.png"
+# define PLAYER01L	"./file_sprite/PLAYER/PLAYER01L.png"
+# define PLAYER02L	"./file_sprite/PLAYER/PLAYER02L.png"
+# define PLAYER03L	"./file_sprite/PLAYER/PLAYER03L.png"
+# define PLAYER04L	"./file_sprite/PLAYER/PLAYER04L.png"
+# define PLAYER05L	"./file_sprite/PLAYER/PLAYER05L.png"
+# define PLAYER06L	"./file_sprite/PLAYER/PLAYER06L.png"
+# define PLAYER07L	"./file_sprite/PLAYER/PLAYER07L.png"
 
 typedef struct s_wall
 {

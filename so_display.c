@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:38:42 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 15:10:12 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 15:59:58 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void	render_tileset(t_data *data, int x, int y, size_t frame)
 	else if (data->map.map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
-		img = data->player.img_r[frame % 8];
+		if (data->player.face == 1)
+			img = data->player.img_r[frame % 8];
+		else
+			img = data->player.img_l[frame % 8];
 	}
 	else if (data->map.map[y][x] == 'C')
 	{

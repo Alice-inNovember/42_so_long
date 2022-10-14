@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:40:28 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 15:59:26 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ int	key_hook(int keycode, t_data *data)
 	x = 0;
 	y = 0;
 	if (keycode == KEY_A)
+	{
+		data->player.face = -1;
 		x = -1;
+	}
 	else if (keycode == KEY_D)
+	{
+		data->player.face = 1;
 		x = 1;
+	}
 	if (keycode == KEY_W)
 		y = -1;
 	else if (keycode == KEY_S)
@@ -43,7 +49,7 @@ int	red_button_hook(t_data *data)
 void	player_init(t_data *data)
 {
 	data->player.coin = 0;
-	data->player.face = 'r';
+	data->player.face = 1;
 	data->player.key = 0;
 }
 
@@ -78,7 +84,7 @@ int	main(int argc, char **argv)
 	data.mlx_win = mlx_new_window(data.mlx, \
 	(data.map.x + 2) * 32, (data.map.y + 2) * 32, "So_long");
 	background_init(&data);
-	mlx_string_put(data.mlx, data.mlx_win, 32, 20, 0x00FFFF00, "Score : ");
+	mlx_string_put(data.mlx, data.mlx_win, 32, 20, 0xFFFFFFFF, "Score : ");
 	mlx_key_hook(data.mlx_win, key_hook, &data);
 	mlx_hook(data.mlx_win, ON_DESTROY, 0, red_button_hook, &data);
 	mlx_loop_hook(data.mlx, render_window, &data);

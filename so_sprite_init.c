@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:52:24 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:59:57 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 16:00:47 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ void	player_image_init(t_data *data)
 	data->player.img_r[5] = png2image(data->mlx, PLAYER05R, &x, &y);
 	data->player.img_r[6] = png2image(data->mlx, PLAYER06R, &x, &y);
 	data->player.img_r[7] = png2image(data->mlx, PLAYER07R, &x, &y);
+	data->player.img_l[0] = png2image(data->mlx, PLAYER00L, &x, &y);
+	data->player.img_l[1] = png2image(data->mlx, PLAYER01L, &x, &y);
+	data->player.img_l[2] = png2image(data->mlx, PLAYER02L, &x, &y);
+	data->player.img_l[3] = png2image(data->mlx, PLAYER03L, &x, &y);
+	data->player.img_l[4] = png2image(data->mlx, PLAYER04L, &x, &y);
+	data->player.img_l[5] = png2image(data->mlx, PLAYER05L, &x, &y);
+	data->player.img_l[6] = png2image(data->mlx, PLAYER06L, &x, &y);
+	data->player.img_l[7] = png2image(data->mlx, PLAYER07L, &x, &y);
 }
 
 void	sprite_init(t_data *data)
