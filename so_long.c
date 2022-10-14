@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:36:55 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:40:28 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	data.mlx_win = mlx_new_window(data.mlx, \
 	(data.map.x + 2) * 32, (data.map.y + 2) * 32, "So_long");
 	background_init(&data);
-	mlx_string_put(data.mlx, data.mlx_win, 16, 16, 0x00FFFF00, "Score : ");
+	mlx_string_put(data.mlx, data.mlx_win, 32, 20, 0x00FFFF00, "Score : ");
 	mlx_key_hook(data.mlx_win, key_hook, &data);
 	mlx_hook(data.mlx_win, ON_DESTROY, 0, red_button_hook, &data);
 	mlx_loop_hook(data.mlx, render_window, &data);

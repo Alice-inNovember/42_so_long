@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:00:07 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/13 12:39:25 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:58:59 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,14 @@
 # define COIN06		"./file_sprite/PROP/COIN06.png"
 # define COIN07		"./file_sprite/PROP/COIN07.png"
 
-# define PLAYER		"./file_sprite/PLAYER/PLAYER.png"
+# define PLAYER00R	"./file_sprite/PLAYER/PLAYER00R.png"
+# define PLAYER01R	"./file_sprite/PLAYER/PLAYER01R.png"
+# define PLAYER02R	"./file_sprite/PLAYER/PLAYER02R.png"
+# define PLAYER03R	"./file_sprite/PLAYER/PLAYER03R.png"
+# define PLAYER04R	"./file_sprite/PLAYER/PLAYER04R.png"
+# define PLAYER05R	"./file_sprite/PLAYER/PLAYER05R.png"
+# define PLAYER06R	"./file_sprite/PLAYER/PLAYER06R.png"
+# define PLAYER07R	"./file_sprite/PLAYER/PLAYER07R.png"
 
 typedef struct s_wall
 {

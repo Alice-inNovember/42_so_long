@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:52:24 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/13 12:39:56 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:59:57 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,14 @@ void	player_image_init(t_data *data)
 	int		y;
 
 	png2image = mlx_png_file_to_image;
-	data->player.img_r = png2image(data->mlx, PLAYER, &x, &y);
+	data->player.img_r[0] = png2image(data->mlx, PLAYER00R, &x, &y);
+	data->player.img_r[1] = png2image(data->mlx, PLAYER01R, &x, &y);
+	data->player.img_r[2] = png2image(data->mlx, PLAYER02R, &x, &y);
+	data->player.img_r[3] = png2image(data->mlx, PLAYER03R, &x, &y);
+	data->player.img_r[4] = png2image(data->mlx, PLAYER04R, &x, &y);
+	data->player.img_r[5] = png2image(data->mlx, PLAYER05R, &x, &y);
+	data->player.img_r[6] = png2image(data->mlx, PLAYER06R, &x, &y);
+	data->player.img_r[7] = png2image(data->mlx, PLAYER07R, &x, &y);
 }
 
 void	sprite_init(t_data *data)

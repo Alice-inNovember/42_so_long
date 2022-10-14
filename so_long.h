@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:13:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:32:34 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/14 14:57:35 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ typedef struct s_player
 	int		key;
 	int		coin;
 	int		face;
-	void	*img_u;
-	void	*img_d;
-	void	*img_r;
-	void	*img_l;
+	void	*img_r[8];
+	void	*img_l[8];
 }	t_player;
 
 typedef struct s_data
