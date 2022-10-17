@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:38:42 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 12:59:50 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 15:57:40 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	render_window(t_data *data)
 	static size_t	tick;
 
 	y = 0;
-	if (tick % 500 == 0)
+	if (tick % 600 == 0)
 	{
 		while (data->map.map[y])
 		{
@@ -104,6 +104,7 @@ int	render_window(t_data *data)
 		mlx_sync(MLX_SYNC_WIN_FLUSH_CMD, data->mlx_win);
 		frame++;
 	}
+	mob_control(data, tick);
 	tick++;
 	return (0);
 }

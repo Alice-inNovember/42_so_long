@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:05:20 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 14:02:08 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 16:10:02 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,34 @@
 
 void	mob_move(t_data *data, int x, int y)
 {
-	int	option_xy;
-	int	option_pm;
 	int	offset;
+	int	offset_x;
+	int	offset_y;
 
-	option_xy = rand() % 2;
-	option_pm = rand() % 2;
-	if (option_pm == 0)
+	offset_x = 0;
+	offset_y = 0;
+	if (rand() % 2)
 		offset = 1;
 	else
 		offset = -1;
-	if (option_xy == 1)
-	{
-		if (ft_is_set(data->map.map[y + offset][x], "1CEBM"))
-			return ;
-		data->map.map[y + offset][x] = 'M';
-	}
+	if (rand() % 2)
+		offset_x = offset;
 	else
-	{
-		if (ft_is_set(data->map.map[y][x + offset], "1CEBM"))
-			return ;
-		data->map.map[y][x + offset] = 'M';
-	}
+		offset_y = offset;
+	if (ft_is_set(data->map.map[y + offset_y][x + offset_x], "1CEBM"))
+		return ;
+	else if (data->map.map[y + offset_y][x + offset_x] == 'P')
+		mob_collide();
+	data->map.map[y + offset_y][x + offset_x] = 'M';
 	data->map.map[y][x] = '0';
 }
 
-void	mob_control(t_data *data, int op1, int op2)
+void	mob_control(t_data *data, size_t tick)
 {
 	int	x;
 	int	y;
 
-	if (!op1 && !op2)
+	if (tick % 4000 != 0)
 		return ;
 	y = 0;
 	while (data->map.map[y])

@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 13:59:04 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 15:52:31 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	key_hook(int keycode, t_data *data)
 		y = 1;
 	if (keycode == KEY_ESC)
 		exit(EXIT_SUCCESS);
-	mob_control(data, x, y);
 	player_control(data, x, y);
 	return (0);
 }
@@ -83,10 +82,9 @@ int	main(int argc, char **argv)
 	sprite_init(&data);
 	player_init(&data);
 	srand(time(NULL));
-	data.mlx_win = mlx_new_window(data.mlx, \
-	(data.map.x + 2) * 32, (data.map.y + 2) * 32, "So_long");
+	data.mlx_win = mlx_new_window(\
+	data.mlx, (data.map.x + 2) * 32, (data.map.y + 2) * 32, "So_long");
 	background_init(&data);
-	mlx_string_put(data.mlx, data.mlx_win, 32, 20, 0xFFFFFFFF, "Score : ");
 	mlx_key_hook(data.mlx_win, key_hook, &data);
 	mlx_hook(data.mlx_win, ON_DESTROY, 0, red_button_hook, &data);
 	mlx_loop_hook(data.mlx, render_window, &data);

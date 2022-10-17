@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:41:09 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 13:52:00 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 16:14:23 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	b_move(t_data *data, int x, int y)
 
 void	mob_collide(void)
 {
+	ft_putstr_fd("DON'T PANIC!\n", 1);
 	exit(EXIT_SUCCESS);
 }
 

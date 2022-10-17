@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:13:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 14:02:19 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 16:39:56 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data
 	t_player	player;
 	t_wall		wall;
 	t_prop		prop;
+	t_font		font;
 }	t_data;
 
 //util
@@ -86,6 +87,8 @@ int		map_check_valid(t_data *data);
 
 //sprite
 void	sprite_init(t_data *data);
+void	font_ascii_init_1(t_data *data);
+void	font_ascii_init_2(t_data *data);
 
 //display
 int		render_window(t_data *data);
@@ -94,6 +97,7 @@ void	render_background(t_data *data, int x, int y);
 //player_cnt
 void	player_control(t_data *data, int x, int y);
 int		ft_is_set(char c, char *set);
-void	mob_control(t_data *data, int op1, int op2);
+void	mob_collide(void);
+void	mob_control(t_data *data, size_t tick);
 
 #endif

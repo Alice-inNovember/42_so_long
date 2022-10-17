@@ -20,6 +20,7 @@ SRCS		=	so_long.c \
 				so_display.c \
 				so_map_check.c \
 				so_map_init.c \
+				so_sprite_init2.c \
 				so_sprite_init.c \
 				so_mob_control.c \
 				so_player_control.c

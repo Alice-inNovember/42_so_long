@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:52:24 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 12:14:28 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 16:39:28 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,6 @@ void	sprite_init(t_data *data)
 	wall_image_init(data);
 	prop_image_init(data);
 	mob_image_init(data);
+	font_ascii_init_1(data);
+	font_ascii_init_2(data);
 }
