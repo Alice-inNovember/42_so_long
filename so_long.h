@@ -6,19 +6,23 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:13:25 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:57:35 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 14:02:19 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
+//libs
 # include <fcntl.h>
 # include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdio.h>
 # include <errno.h>
+//bonus
+# include <time.h>
+# include <stdlib.h>
+//mylibs
 # include "get_next_line.h"
 # include "libft.h"
 # include "so_sprite.h"
@@ -47,7 +51,6 @@ typedef struct s_map
 	int		wall;
 	int		coin;
 	int		exit;
-	int		barrel;
 	int		player;
 }	t_map;
 
@@ -90,5 +93,7 @@ void	render_background(t_data *data, int x, int y);
 
 //player_cnt
 void	player_control(t_data *data, int x, int y);
+int		ft_is_set(char c, char *set);
+void	mob_control(t_data *data, int op1, int op2);
 
 #endif

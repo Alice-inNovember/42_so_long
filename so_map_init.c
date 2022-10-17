@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 10:38:39 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 10:00:54 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	map_val_set(t_data *data)
 	data->map.wall = 0;
 	data->map.coin = 0;
 	data->map.exit = 0;
-	data->map.barrel = 0;
 }
 
 void	map_init(char *filename, t_data *data)

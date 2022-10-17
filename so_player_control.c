@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:41:09 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 14:24:10 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 13:52:00 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,32 @@ int	ft_is_set(char c, char *set)
 	return (0);
 }
 
+int	exit_key(t_data *data)
+{
+	if (data->player.coin == data->map.coin)
+		exit(0);
+	else
+		return (-1);
+}
+
+int	b_move(t_data *data, int x, int y)
+{
+	int	offset_x;
+	int	offset_y;
+
+	offset_x = data->player.x + x;
+	offset_y = data->player.y + y;
+	if (ft_is_set(data->map.map[offset_y + y][offset_x + x], "1CEB"))
+		return (-1);
+	data->map.map[offset_y + y][offset_x + x] = 'B';
+	return (0);
+}
+
+void	mob_collide(void)
+{
+	exit(EXIT_SUCCESS);
+}
+
 void	player_control(t_data *data, int x, int y)
 {
 	int	offset_x;
@@ -33,23 +59,18 @@ void	player_control(t_data *data, int x, int y)
 
 	offset_x = data->player.x + x;
 	offset_y = data->player.y + y;
-	if (data->map.map[offset_y][offset_x] == '1')
+	if (data->map.map[offset_y][offset_x] == 'M')
+		mob_collide();
+	else if (data->map.map[data->player.y][data->player.x] == 'M')
+		mob_collide();
+	else if (data->map.map[offset_y][offset_x] == '1')
 		return ;
 	else if (data->map.map[offset_y][offset_x] == 'C')
 		data->player.coin++;
-	else if (data->map.map[offset_y][offset_x] == 'E')
-	{
-		if (data->player.coin == data->map.coin)
-			exit(0);
-		else
-			return ;
-	}
-	else if (data->map.map[offset_y][offset_x] == 'B')
-	{
-		if (ft_is_set(data->map.map[offset_y + y][offset_x + x], "1CEB"))
-			return ;
-		data->map.map[offset_y + y][offset_x + x] = 'B';
-	}
+	else if (data->map.map[offset_y][offset_x] == 'E' && exit_key(data))
+		return ;
+	else if (data->map.map[offset_y][offset_x] == 'B' && b_move(data, x, y))
+		return ;
 	data->map.map[data->player.y][data->player.x] = '0';
 	data->map.map[offset_y][offset_x] = 'P';
 	data->player.y += y;

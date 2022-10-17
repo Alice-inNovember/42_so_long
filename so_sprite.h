@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:00:07 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 16:00:36 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 12:08:00 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,39 +48,21 @@
 # define PLAYER01R	"./file_sprite/PLAYER/PLAYER01R.png"
 # define PLAYER02R	"./file_sprite/PLAYER/PLAYER02R.png"
 # define PLAYER03R	"./file_sprite/PLAYER/PLAYER03R.png"
-# define PLAYER04R	"./file_sprite/PLAYER/PLAYER04R.png"
-# define PLAYER05R	"./file_sprite/PLAYER/PLAYER05R.png"
-# define PLAYER06R	"./file_sprite/PLAYER/PLAYER06R.png"
-# define PLAYER07R	"./file_sprite/PLAYER/PLAYER07R.png"
 
 # define PLAYER00L	"./file_sprite/PLAYER/PLAYER00L.png"
 # define PLAYER01L	"./file_sprite/PLAYER/PLAYER01L.png"
 # define PLAYER02L	"./file_sprite/PLAYER/PLAYER02L.png"
 # define PLAYER03L	"./file_sprite/PLAYER/PLAYER03L.png"
-# define PLAYER04L	"./file_sprite/PLAYER/PLAYER04L.png"
-# define PLAYER05L	"./file_sprite/PLAYER/PLAYER05L.png"
-# define PLAYER06L	"./file_sprite/PLAYER/PLAYER06L.png"
-# define PLAYER07L	"./file_sprite/PLAYER/PLAYER07L.png"
+
+# define MOB00	"./file_sprite/MOB/MOB00.png"
+# define MOB01	"./file_sprite/MOB/MOB01.png"
+# define MOB02	"./file_sprite/MOB/MOB02.png"
+# define MOB03	"./file_sprite/MOB/MOB03.png"
 
 typedef struct s_wall
 {
 	void	*land[2];
-	void	*wall_rlud;
-	void	*wall_rlu;
-	void	*wall_rld;
-	void	*wall_rud;
-	void	*wall_lud;
-	void	*wall_rl;
-	void	*wall_ud;
-	void	*wall_ru;
-	void	*wall_rd;
-	void	*wall_lu;
-	void	*wall_ld;
-	void	*wall_r;
-	void	*wall_l;
-	void	*wall_u;
-	void	*wall_d;
-	void	*wall;
+	void	*wall[16];
 }	t_wall;
 
 typedef struct s_prop
@@ -89,6 +71,7 @@ typedef struct s_prop
 	void	*berral;
 	void	*rock;
 	void	*coin[8];
+	void	*mob[8];
 }	t_prop;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/14 10:38:22 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/17 10:13:27 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ int	map_charset_cnt(t_data *data, int y, int x)
 		data->player.y = y;
 	}
 	else if (data->map.map[y][x] == 'B')
-		data->map.barrel++;
+		;
+	else if (data->map.map[y][x] == 'M')
+		;
 	else
 		return ('N');
 	return ('Y');
