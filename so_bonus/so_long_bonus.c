@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/18 15:23:11 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 16:02:20 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		err_exit("arg is not valid", EINVAL);
+		err_exit("Error\narg is not valid", EINVAL);
 	data.mlx = mlx_init();
 	map_init(argv[1], &data);
 	sprite_init(&data);

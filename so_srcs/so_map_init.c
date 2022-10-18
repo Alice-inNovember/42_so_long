@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 10:00:54 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 16:07:43 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,15 @@ void	map_val_set(t_data *data)
 void	map_init(char *filename, t_data *data)
 {
 	int		mapfd;
+	size_t	len;
 
+	len = ft_strlen(filename);
+	if (ft_strncmp(&filename[len - 4], ".ber", 4))
+		err_exit("Error\nWrong file extension : use < .ber >\n", EINVAL);
 	map_val_set(data);
 	mapfd = open(filename, O_RDONLY);
 	if (mapfd == -1)
-		err_exit("open", errno);
+		err_exit("Error\nopen", errno);
 	data->map.map = map_pars_re(mapfd, 0);
 	close(mapfd);
 	map_rmove_nl(data->map.map);

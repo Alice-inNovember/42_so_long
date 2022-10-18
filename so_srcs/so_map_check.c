@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/18 15:44:59 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 16:03:04 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,10 @@ int	map_check_wall(t_data *data)
 int	map_check_valid(t_data *data)
 {
 	if (map_check_rectangle(data) == 'N')
-		err_exit("map is not rectangle\n", EINVAL);
+		err_exit("Error\nmap is not rectangle\n", EINVAL);
 	else if (map_check_charset(data, 0, 0) == 'N')
-		err_exit("map set is not valid\n", EINVAL);
+		err_exit("Error\nmap set is not valid\n", EINVAL);
 	else if (map_check_wall(data) == 'N')
-		err_exit("map is not surround\n", EINVAL);
+		err_exit("Error\nmap is not surround\n", EINVAL);
 	return ('Y');
 }

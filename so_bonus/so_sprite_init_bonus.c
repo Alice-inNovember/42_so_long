@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:52:24 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/18 15:22:43 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 16:02:48 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,20 @@ void	sprite_init(t_data *data)
 
 	player_image_init(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 	wall_image_init(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 	prop_image_init(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 	mob_image_init(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 	font_ascii_init_1(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 	font_ascii_init_2(data, &x, &y);
 	if (x == 0 || y == 0)
-		err_exit("png2image", errno);
+		err_exit("Error\npng2image", errno);
 }
