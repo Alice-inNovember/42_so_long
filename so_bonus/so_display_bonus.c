@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_display.c                                       :+:      :+:    :+:   */
+/*   so_display_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:38:42 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 15:57:40 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 15:23:37 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	*wall_select(t_data *data, int x, int y)
 {
@@ -28,83 +28,77 @@ void	*wall_select(t_data *data, int x, int y)
 	return (data->wall.wall[select]);
 }
 
-void	render_tileset(t_data *data, int x, int y, size_t frame)
+void	render_tileset_player(t_data *data, int x, int y, size_t selecter)
 {
-	void	*img;
-	int		x_cord;
-	int		y_cord;
-
-	x_cord = (x + 1) * 32;
-	y_cord = (y + 1) * 32;
-	img = data->wall.land[0];
-	if (data->map.map[y][x] == '1')
-		return ;
-	else if (data->map.map[y][x] == 'P')
+	mlx_put_image_to_window(data->mlx, data->mlx_win, \
+	data->wall.land[0], (x + 1) * 32, (y + 1) * 32);
+	if (data->map.map[y][x] == 'P')
 	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
 		if (data->player.face == 1)
-			img = data->player.img_r[frame % 8];
+			mlx_put_image_to_window(data->mlx, data->mlx_win, \
+			data->player.img_r[selecter], (x + 1) * 32, (y + 1) * 32);
 		else
-			img = data->player.img_l[frame % 8];
+			mlx_put_image_to_window(data->mlx, data->mlx_win, \
+			data->player.img_l[selecter], (x + 1) * 32, (y + 1) * 32);
 	}
-	else if (data->map.map[y][x] == 'C')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
-		img = data->prop.coin[frame % 8];
-	}
+}
+
+void	render_tileset(t_data *data, int x, int y, size_t selecter)
+{
+	if (data->player.game_status)
+		return ;
+	render_tileset_player(data, x, y, selecter);
+	if (data->map.map[y][x] == 'C')
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.coin[selecter], (x + 1) * 32, (y + 1) * 32);
 	else if (data->map.map[y][x] == 'M')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
-		img = data->prop.mob[frame % 8];
-	}
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.mob[selecter], (x + 1) * 32, (y + 1) * 32);
 	else if (data->map.map[y][x] == 'E')
-		img = data->prop.key;
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.key, (x + 1) * 32, (y + 1) * 32);
 	else if (data->map.map[y][x] == 'B')
-		img = data->prop.berral;
-	else
-		img = data->wall.land[0];
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.berral, (x + 1) * 32, (y + 1) * 32);
 }
 
 void	render_background(t_data *data, int x, int y)
 {
 	void	*img;
-	int		x_cord;
-	int		y_cord;
 
-	x_cord = (x + 1) * 32;
-	y_cord = (y + 1) * 32;
 	img = data->wall.land[0];
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, \
+	img, (x + 1) * 32, (y + 1) * 32);
 	if (data->map.map[y][x] == '1')
 		img = wall_select(data, x, y);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, x_cord, y_cord);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, \
+	img, (x + 1) * 32, (y + 1) * 32);
 }
 
 int	render_window(t_data *data)
 {
 	int				x;
 	int				y;
-	static size_t	frame;
-	static size_t	tick;
+	static size_t	frame = 0;
+	static size_t	tick = 0;
 
-	y = 0;
+	mob_control(data, tick);
 	if (tick % 600 == 0)
 	{
+		y = 0;
 		while (data->map.map[y])
 		{
 			x = 0;
 			while (data->map.map[y][x])
 			{
-				render_tileset(data, x, y, frame);
+				if (data->map.map[y][x] != '1')
+					render_tileset(data, x, y, frame % 8);
 				x++;
 			}
 			y++;
 		}
-		mlx_sync(MLX_SYNC_WIN_FLUSH_CMD, data->mlx_win);
 		frame++;
 	}
-	mob_control(data, tick);
 	tick++;
 	return (0);
 }

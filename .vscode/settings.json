@@ -6,6 +6,8 @@
 		"string_view": "c",
 		"vector": "c",
 		"temp": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"so_sprite_bonus.h": "c",
+		"so_long_bonus.h": "c"
 	}
 }

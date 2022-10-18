@@ -11,40 +11,53 @@ MLXFLAGS	=	-framework OpenGL -framework AppKit
 LFTDIR		=	libft
 GNLDIR		=	get_next_line
 MLXDIR		=	libmlx
+SRCDIR		=	so_srcs
+BONUSDIR	=	so_bonus
 #FILES
 LIBS		=	$(LFTDIR)/libft.a \
 				$(GNLDIR)/get_next_line.a
 DYLIB		=	$(MLXDIR)/libmlx.dylib
-SRCS		=	so_long.c \
-				so_long_util.c \
-				so_display.c \
-				so_map_check.c \
-				so_map_init.c \
-				so_sprite_init2.c \
-				so_sprite_init.c \
-				so_mob_control.c \
-				so_player_control.c
+SRCS		=	$(SRCDIR)/so_long.c $(SRCDIR)/so_long_util.c \
+				$(SRCDIR)/so_display.c $(SRCDIR)/so_display_score.c \
+				$(SRCDIR)/so_map_init.c $(SRCDIR)/so_map_check.c \
+				$(SRCDIR)/so_sprite_init.c $(SRCDIR)/so_sprite_init2.c \
+				$(SRCDIR)/so_player_control.c $(SRCDIR)/so_mob_control.c
 OBJS		=	${SRCS:.c=.o}
+BSRCS		=	$(BONUSDIR)/so_long_bonus.c $(BONUSDIR)/so_long_util_bonus.c \
+				$(BONUSDIR)/so_display_bonus.c $(BONUSDIR)/so_display_score_bonus.c \
+				$(BONUSDIR)/so_map_init_bonus.c $(BONUSDIR)/so_map_check_bonus.c \
+				$(BONUSDIR)/so_sprite_init_bonus.c $(BONUSDIR)/so_sprite_init2_bonus.c \
+				$(BONUSDIR)/so_player_control_bonus.c $(BONUSDIR)/so_mob_control_bonus.c
+BOBJS		=	${BSRCS:.c=.o}
 
 all : $(NAME)
 
-bonus : $(NAME)
-
-$(NAME) : $(OBJS) $(MAPOBJS) $(SPRITEOBJS)
+ifeq ($(filter bonus, $(MAKECMDGOALS)), bonus)
+$(NAME) : $(BOBJS)
+	$(MAKE) -C $(LFTDIR)
+	$(MAKE) -C $(GNLDIR)
+	$(MAKE) -C $(MLXDIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(BOBJS) $(LIBS) $(MLXFLAGS) -L$(MLXDIR) -lmlx
+	-install_name_tool -change libmlx.dylib ./$(DYLIB) $(NAME)
+else
+$(NAME) : $(OBJS)
 	$(MAKE) -C $(LFTDIR)
 	$(MAKE) -C $(GNLDIR)
 	$(MAKE) -C $(MLXDIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXFLAGS) -L$(MLXDIR) -lmlx
 	-install_name_tool -change libmlx.dylib ./$(DYLIB) $(NAME)
+endif
+
+bonus : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(LFTDIR) -I $(GNLDIR) -I $(MLXDIR) -I $(PWD)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(LFTDIR) -I $(GNLDIR) -I $(MLXDIR)
 
 clean :
 	$(MAKE) -C $(LFTDIR) clean
 	$(MAKE) -C $(GNLDIR) clean
 	$(MAKE) -C $(MLXDIR) clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BOBJS)
 
 fclean : clean
 	$(MAKE) -C $(LFTDIR) fclean

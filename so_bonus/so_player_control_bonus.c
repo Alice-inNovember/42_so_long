@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_player_control.c                                :+:      :+:    :+:   */
+/*   so_player_control_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:41:09 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 16:14:23 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 15:22:32 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_is_set(char c, char *set)
 {
@@ -29,7 +29,13 @@ int	ft_is_set(char c, char *set)
 int	exit_key(t_data *data)
 {
 	if (data->player.coin == data->map.coin)
-		exit(0);
+	{
+		data->player.game_status = 1;
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.congrats, data->map.x_cordset, 0);
+		render_score(data);
+		return (-1);
+	}
 	else
 		return (-1);
 }
@@ -47,10 +53,12 @@ int	b_move(t_data *data, int x, int y)
 	return (0);
 }
 
-void	mob_collide(void)
+void	mob_collide(t_data *data)
 {
-	ft_putstr_fd("DON'T PANIC!\n", 1);
-	exit(EXIT_SUCCESS);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->prop.dontpanic, data->map.x_cordset, 0);
+	render_score(data);
+	data->player.game_status = -1;
 }
 
 void	player_control(t_data *data, int x, int y)
@@ -61,9 +69,9 @@ void	player_control(t_data *data, int x, int y)
 	offset_x = data->player.x + x;
 	offset_y = data->player.y + y;
 	if (data->map.map[offset_y][offset_x] == 'M')
-		mob_collide();
+		mob_collide(data);
 	else if (data->map.map[data->player.y][data->player.x] == 'M')
-		mob_collide();
+		mob_collide(data);
 	else if (data->map.map[offset_y][offset_x] == '1')
 		return ;
 	else if (data->map.map[offset_y][offset_x] == 'C')
@@ -72,6 +80,8 @@ void	player_control(t_data *data, int x, int y)
 		return ;
 	else if (data->map.map[offset_y][offset_x] == 'B' && b_move(data, x, y))
 		return ;
+	if ((x || y) && data->player.game_status == 0)
+		display_score(data);
 	data->map.map[data->player.y][data->player.x] = '0';
 	data->map.map[offset_y][offset_x] = 'P';
 	data->player.y += y;

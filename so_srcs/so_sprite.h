@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:00:07 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 16:39:46 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 13:14:31 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define KEY		"./file_sprite/PROP/KEY.png"
 # define BERRAL		"./file_sprite/PROP/BERRAL.png"
 # define ROCK		"./file_sprite/PROP/ROCK.png"
+# define CONGRATS	"./file_sprite/PROP/CONGRATS.png"
+# define DONTPANIC	"./file_sprite/PROP/DONTPANIC.png"
 # define COIN00		"./file_sprite/PROP/COIN00.png"
 # define COIN01		"./file_sprite/PROP/COIN01.png"
 # define COIN02		"./file_sprite/PROP/COIN02.png"
@@ -71,6 +73,7 @@
 # define FONT_9		"./file_sprite/FONT/FONT_9.png"
 
 # define FONT_COLON	"./file_sprite/FONT/FONT_COLON.png"
+# define FONT_VOID	"./file_sprite/FONT/FONT_VOID.png"
 
 # define FONT_A		"./file_sprite/FONT/FONT_A.png"
 # define FONT_B		"./file_sprite/FONT/FONT_B.png"
@@ -99,7 +102,6 @@
 # define FONT_Y		"./file_sprite/FONT/FONT_Y.png"
 # define FONT_Z		"./file_sprite/FONT/FONT_Z.png"
 
-
 typedef struct s_wall
 {
 	void	*land[2];
@@ -111,13 +113,14 @@ typedef struct s_prop
 	void	*key;
 	void	*berral;
 	void	*rock;
+	void	*congrats;
+	void	*dontpanic;
 	void	*coin[8];
 	void	*mob[8];
 }	t_prop;
 
 typedef struct s_font
 {
-	void	*num[10];
 	void	*ascii[128];
 }	t_font;
 

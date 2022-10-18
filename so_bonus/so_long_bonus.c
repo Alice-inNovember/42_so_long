@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:00:02 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/17 15:52:31 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 15:23:11 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	key_hook(int keycode, t_data *data)
 {
@@ -46,31 +46,6 @@ int	red_button_hook(t_data *data)
 	return (0);
 }
 
-void	player_init(t_data *data)
-{
-	data->player.coin = 0;
-	data->player.face = 1;
-	data->player.key = 0;
-}
-
-void	background_init(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (data->map.map[y])
-	{
-		x = 0;
-		while (data->map.map[y][x])
-		{
-			render_background(data, x, y);
-			x++;
-		}
-		y++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -84,6 +59,8 @@ int	main(int argc, char **argv)
 	srand(time(NULL));
 	data.mlx_win = mlx_new_window(\
 	data.mlx, (data.map.x + 2) * 32, (data.map.y + 2) * 32, "So_long");
+	data.map.x_cordset = (data.map.x + 2) * 32 / 2 - 512;
+	render_score(&data);
 	background_init(&data);
 	mlx_key_hook(data.mlx_win, key_hook, &data);
 	mlx_hook(data.mlx_win, ON_DESTROY, 0, red_button_hook, &data);
