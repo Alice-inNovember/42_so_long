@@ -1,7 +1,7 @@
 #NAME
 NAME		=	so_long
 #CMDS
-CC			=	gcc
+CC			=	cc
 RM			=	rm -rf
 LIBC		=	ar rcs
 #FLAGS

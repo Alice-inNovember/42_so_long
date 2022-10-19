@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:15:44 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/18 15:04:51 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/19 08:24:56 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	display_score(t_data *data)
 	int	val;
 
 	data->player.steps++;
+	if (data->player.game_status == 0)
+		(ft_putnbr_fd(data->player.steps, 1), ft_putstr_fd("\n", 1));
 	steps = data->player.steps;
 	iput2window = mlx_put_image_to_window;
 	iput2window(data->mlx, data->mlx_win, data->font.ascii['\0'], 25 * 7, 0);
