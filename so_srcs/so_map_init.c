@@ -6,7 +6,7 @@
 /*   By: junlee2 <junlee2@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:12:49 by junlee2           #+#    #+#             */
-/*   Updated: 2022/10/18 16:07:43 by junlee2          ###   ########seoul.kr  */
+/*   Updated: 2022/10/25 09:26:11 by junlee2          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	**map_pars_re(int mapfd, int cnt)
 		return (returnmap);
 	}
 	returnmap = map_pars_re(mapfd, cnt + 1);
+	if (!returnmap)
+		return (0);
 	returnmap[cnt] = temp;
 	return (returnmap);
 }
@@ -91,6 +93,8 @@ void	map_init(char *filename, t_data *data)
 	if (mapfd == -1)
 		err_exit("Error\nopen", errno);
 	data->map.map = map_pars_re(mapfd, 0);
+	if (!data->map.map)
+		err_exit("Error\nMap not valid or malloc err\n", 0);
 	close(mapfd);
 	map_rmove_nl(data->map.map);
 	map_check_valid(data);
